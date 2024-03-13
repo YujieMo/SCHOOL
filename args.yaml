@@ -1,0 +1,122 @@
+DEFAULT: &DEFAULT
+  black_list: [7,8]
+  num_gpus_total: 4
+  num_gpus_to_use: 1
+  heads: 8
+  edge_sampling_ratio: 0.9
+  seed: 0
+  verbose: 2
+  save_model: False
+  save_plot: False
+  val_interval: 1
+
+SHGL: &SHGL
+  model_name: SHGL
+  <<: *DEFAULT
+
+
+SHGL-ACM-Node: &SHGL-ACM-Node
+  <<: *SHGL
+  nb_epochs: 500
+  lr: 0.0005
+  hid_units: 512
+  hid_units2: 128
+  out_ft: 512
+  g_dim: 64
+  mu: 1
+  delta: 3
+  eta: 0.3
+  gamma: 20
+  k: 10
+  cluster: 3
+  patience: 30
+  sp_arch: [1024, 512, 64, 16, 3]
+
+SHGL-Yelp-Node: &SHGL-Yelp-Node
+  <<: *SHGL
+  nb_epochs: 300
+  lr: 0.00001
+  hid_units: 256
+  hid_units2: 1024
+  out_ft: 256
+  mu: 1
+  delta: 1
+  gamma: 0.1
+  eta: 1
+  g_dim: 256
+  cluster: 3
+  patience: 5
+  sp_arch: [512, 256, 64, 16, 3]
+
+SHGL-DBLP-Node: &SHGL-DBLP-Node
+  <<: *SHGL
+  nb_epochs: 1000
+  lr: 0.0001
+  hid_units: 256
+  hid_units2: 1024
+  out_ft: 128
+  g_dim: 256
+  mu: 0.1
+  delta: 0.05
+  eta: 0.1
+  gamma: 0.05
+  k: 10
+  patience: 30
+  cluster: 4
+  sp_arch: [512, 256, 128, 16, 4]
+
+SHGL-Aminer-Node: &SHGL-Aminer-Node
+  <<: *SHGL
+  nb_epochs: 500
+  lr: 0.0005
+  hid_units: 256
+  hid_units2: 256
+  out_ft: 256
+  mu: 1
+  delta: 1
+  gamma: 1
+  k: 10
+  eta: 1
+  g_dim: 256
+  g_equidim: 512
+  p_equidim: 256
+  cluster: 4
+  sp_arch: [512, 256, 64, 16, 4]
+
+
+SHGL-photo-Node: &SHGL-photo-Node
+  <<: *SHGL
+  dfr: 0.2
+  nb_epochs: 1000
+  lr: 0.0001
+  hid_units: 512
+#  hid_units2: 256
+  out_ft: 1024
+  g_dim: 256
+  mu: 0.04
+  delta: 0.24
+  gamma: 0.5
+  eta: 0.1
+  k: 20
+  cluster: 8
+  patience: 40
+  sp_arch: [1024, 256, 128, 8]
+
+SHGL-computers-Node: &SHGL-computers-Node
+  <<: *SHGL
+  dfr: 0.1
+  nb_epochs: 1000
+  lr: 5e-05
+  num_layer: 2
+  hid_units: 512
+#  hid_units2: 256
+  out_ft: 1024
+  g_dim: 256
+  mu: 0.01
+  delta: 0.4
+  eta: 10
+  gamma: 0.5
+  k: 20
+  cluster: 10
+  patience: 30
+  sp_arch: [1024, 128, 64, 10]
