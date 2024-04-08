@@ -23,14 +23,16 @@ SHGL-ACM-Node: &SHGL-ACM-Node
   hid_units2: 128
   out_ft: 512
   g_dim: 64
-  mu: 1
-  delta: 3
-  eta: 0.3
+  mu: 0.1 
+  delta: 1 
+  eta: 0.05 
   gamma: 20
   k: 10
   cluster: 3
   patience: 30
   sp_arch: [1024, 512, 64, 16, 3]
+
+
 
 SHGL-Yelp-Node: &SHGL-Yelp-Node
   <<: *SHGL
@@ -40,8 +42,8 @@ SHGL-Yelp-Node: &SHGL-Yelp-Node
   hid_units2: 1024
   out_ft: 256
   mu: 1
-  delta: 1
-  gamma: 0.1
+  delta: 0.5
+  gamma: 0.5
   eta: 1
   g_dim: 256
   cluster: 3
@@ -59,7 +61,7 @@ SHGL-DBLP-Node: &SHGL-DBLP-Node
   mu: 0.1
   delta: 0.05
   eta: 0.1
-  gamma: 0.05
+  gamma: 0.1
   k: 10
   patience: 30
   cluster: 4
