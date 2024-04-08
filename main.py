@@ -65,7 +65,7 @@ def main():
     #     printConfig(args)
     if args.dataset in ["ACM", "Yelp", "DBLP", "Aminer", "IMDB"]:
         embedder = HGNN_SP(args)
-    fis, fas, k1, st = embedder.training()
+    fis, fas = embedder.training()
 
 
 
