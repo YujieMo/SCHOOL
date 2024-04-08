@@ -80,7 +80,7 @@ class HGNN_SP(embedder):
             embs_P2 = self.g(emb_hom)
             #######################################################################
             # The first term in Eq. (15): invariance loss
-            inter_c = embs_P1.T @ embs_P2
+            inter_c = embs_P1.T @ embs_P2.detach()
             inter_c = F.normalize(inter_c, p=2, dim=1)
             loss_inv = -torch.diagonal(inter_c).sum()
 
