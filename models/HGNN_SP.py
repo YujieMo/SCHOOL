@@ -141,8 +141,8 @@ class HGNN_SP(embedder):
             ev = evaluation_metrics(test_out, self.labels, self.args, self.train_idx, self.val_idx, self.test_idx)
         else:
             ev = evaluation_metrics(test_out, self.labels, self.args)
-        fis, fas, k1, st = ev.evalutation(self.args)
-        return fis, fas, k1, st
+        fis, fas = ev.evalutation(self.args)
+        return fis, fas
 
 
 
